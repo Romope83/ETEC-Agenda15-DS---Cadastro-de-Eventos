@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CadastroEventosMAUI.ViewModels"
+             x:DataType="viewmodels:ResumoEventoViewModel"
+             x:Class="CadastroEventosMAUI.Views.ResumoEventoPage"
+             Title="Resumo do Evento">
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="20">
+
+                <Label Text="✨ Resumo do Evento Cadastrado ✨" FontSize="Title" HorizontalOptions="Center" TextColor="{StaticResource Primary}"/>
+
+                <Frame Padding="15" CornerRadius="10" HasShadow="True">
+                    <Grid ColumnDefinitions="Auto, *" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Nome:" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Evento.Nome}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Local:" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Evento.Local}" />
+
+                        <BoxView Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray" Margin="0,5,0,5" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Início:" FontAttributes="Bold" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Evento.DataInicio, StringFormat='{0:dd/MM/yyyy}'}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="Término:" FontAttributes="Bold" />
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Evento.DataTermino, StringFormat='{0:dd/MM/yyyy}'}" />
+
+                        <BoxView Grid.Row="5" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray" Margin="0,5,0,5" />
+
+                        <Label Grid.Row="6" Grid.Column="0" Text="Duração Total:" FontAttributes="Bold" />
+                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding Evento.DuracaoEmDias, StringFormat='{0} dias'}" />
+
+                        <Label Grid.Row="7" Grid.Column="0" Text="Custo p/ Participante:" FontAttributes="Bold" />
+                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding Evento.CustoPorParticipante, StringFormat=' R$: {0}'}" />
+
+                        <Label Grid.Row="8" Grid.Column="0" Text="Participantes:" FontAttributes="Bold" />
+                        <Label Grid.Row="8" Grid.Column="1" Text="{Binding Evento.NumeroParticipantes}" />
+
+                        <BoxView Grid.Row="9" Grid.ColumnSpan="2" HeightRequest="2" Color="DarkGray" Margin="0,5,0,5" />
+
+                        <Label Grid.Row="10" Grid.Column="0" Text="CUSTO TOTAL:" FontAttributes="Bold" FontSize="Medium" />
+                        <Label Grid.Row="10" Grid.Column="1" Text="{Binding Evento.CustoTotal, StringFormat=' R$: {0}'}" FontAttributes="Bold" TextColor="Green" FontSize="Medium"/>
+
+                    </Grid>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>

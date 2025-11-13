@@ -1,0 +1,67 @@
+# Arquivo .gitignore para .NET MAUI e Visual Studio
+
+################################################################################
+# Pastas e Arquivos de Build e Compilação
+################################################################################
+
+# Pastas de saída de build padrão (artifacts)
+[Bb]in/
+[Oo]bj/
+# Arquivos de log de build
+*.log
+
+# Arquivos de pacotes NuGet
+*.nupkg
+# Diretórios de restauração e cache de pacotes
+.vs/
+.git/
+
+################################################################################
+# Visual Studio e IDEs
+################################################################################
+
+# Arquivos de solução e projeto específicos do usuário
+*.user
+*.suo
+*.sln.ide
+*.csproj.user
+*.resharper
+
+# Pastas de teste e cache
+TestResults/
+.idea/
+
+################################################################################
+# Plataformas e Recursos Nativos
+################################################################################
+
+# iOS/Mac
+# Arquivos gerados no build nativo (ex: .xcassets, .app, .ipa)
+build/
+*.DS_Store
+*.xcodeproj/xcuserdata/
+
+# Android
+# Arquivos gerados nativos e APKs
+*.apk
+*.aab
+Xamarin.Android.Common.targets.log
+
+# Windows
+# Arquivos nativos de aplicativos Windows (ex: .exe, .winmd)
+*.exe
+*.dll
+*.pdb
+AppPackages/
+
+################################################################################
+# .NET / MAUI E Outros
+################################################################################
+
+# Arquivos de configurações de execução locais (secrets)
+appsettings.Development.json
+appsettings.Local.json
+
+# Arquivos gerados pelo designer (se não estiverem em uso direto)
+*.g.cs
+*.g.i.cs

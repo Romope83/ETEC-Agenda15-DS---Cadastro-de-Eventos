@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CadastroEventosMAUI.ViewModels"
+             x:DataType="viewmodels:CadastroEventoViewModel"
+             x:Class="CadastroEventosMAUI.CadastroEventoPage"
+             Title="Cadastro de Eventos">
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="15" Padding="20">
+
+                <Label Text="Nome do Evento" FontSize="Medium" />
+                <Entry Text="{Binding Evento.Nome}" Placeholder="Ex: Workshop .NET MAUI" />
+
+                <Label Text="Data de Início" FontSize="Medium" />
+                <DatePicker Date="{Binding Evento.DataInicio}" Format="dd/MM/yyyy" />
+
+                <Label Text="Data de Término" FontSize="Medium" />
+                <DatePicker Date="{Binding Evento.DataTermino}" Format="dd/MM/yyyy" />
+
+                <Label Text="Local do Evento" FontSize="Medium" />
+                <Entry Text="{Binding Evento.Local}" Placeholder="Ex: Auditório Principal" />
+
+                <Label Text="Número de Participantes" FontSize="Medium" />
+                <Entry Text="{Binding Evento.NumeroParticipantes}" Keyboard="Numeric" Placeholder="0" />
+
+                <Label Text="Custo por Participante (R$)" FontSize="Medium" />
+                <Entry Text="{Binding Evento.CustoPorParticipante}" Keyboard="Numeric" Placeholder="0,00" />
+
+                <BoxView HeightRequest="1" Color="LightGray" Margin="0,10,0,10" />
+
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto" ColumnSpacing="10">
+                    <Label Grid.Row="0" Grid.Column="0" Text="Duração (dias):" FontAttributes="Bold"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Evento.DuracaoEmDias, StringFormat='{0} dias'}" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Custo Total Estimado:" FontAttributes="Bold"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Evento.CustoTotal, StringFormat=' R$: {0}'}" TextColor="Green" FontAttributes="Bold"/>
+                </Grid>
+
+                <Button Text="Cadastrar Evento"
+                    Command="{Binding SalvarEventoCommand}"
+                    Margin="0,20,0,0"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
