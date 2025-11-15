@@ -55,3 +55,8 @@ O aplicativo suporta as seguintes operações em ambas as plataformas (Windows e
 | **Cadastro (Create)** | `EventListPage` $\rightarrow$ `CadastroEventoPage` | Preenche o formulário e salva. O `Id` é `0`. | `CadastroEventoViewModel` $\rightarrow$ `SalvarEventoAsync` (Insert) |
 | **Edição (Update)** | `EventListPage` (clique no item) $\rightarrow$ `CadastroEventoPage` | Navega com o `Id` do evento na URL (`IQueryAttributable` no ViewModel) e preenche os campos. | `CadastroEventoViewModel` $\rightarrow$ `GetEventByIdAsync` $\rightarrow$ `SalvarEventoAsync` (Update) |
 | **Visualização (Read)** | `CadastroEventoPage` $\rightarrow$ `ResumoEventoPage` | Exibe o resumo do evento, incluindo as propriedades calculadas (`CustoTotal`, `DuracaoEmDias`). | Navegação do Shell com Serialização JSON do objeto. |
+
+
+
+Link para o youtube do sistema funcionando:
+https://www.youtube.com/watch?v=E-Oy4Wkvy4I
