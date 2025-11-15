@@ -3,13 +3,13 @@
     x:Class="CadastroEventosMAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:CadastroEventosMAUI"
+    xmlns:local="clr-namespace:CadastroEventosMAUI.Views"
 
     Title="CadastroEventosMAUI">
 
     <ShellContent
-        Title="Cadastro"
-        ContentTemplate="{DataTemplate local:CadastroEventoPage}"
-        Route="CadastroEventoPage" />
+        Title="Início"
+        ContentTemplate="{DataTemplate local:EventListPage}"
+        Route="EventListPage" />
 
 </Shell>

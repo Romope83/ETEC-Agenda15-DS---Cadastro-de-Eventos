@@ -1,15 +1,20 @@
 ﻿
+
 using CommunityToolkit.Mvvm.ComponentModel;
+using SQLite; 
 using System;
 
 namespace CadastroEventosMAUI.Models
 {
-    // A classe herda de ObservableObject para implementar o INotifyPropertyChanged
     public class EventoModel : ObservableObject
     {
+
+        [PrimaryKey, AutoIncrement] 
+        public int Id { get; set; }
+
         private string _nome = string.Empty;
-        private DateTime _dataInicio = DateTime.Today; // Inicialização padrão
-        private DateTime _dataTermino = DateTime.Today.AddDays(1); // Inicialização padrão
+        private DateTime _dataInicio = DateTime.Today;
+        private DateTime _dataTermino = DateTime.Today.AddDays(1);
         private int _numeroParticipantes;
         private string _local = string.Empty;
         private decimal _custoPorParticipante;
@@ -18,7 +23,6 @@ namespace CadastroEventosMAUI.Models
         public string Nome
         {
             get => _nome;
-            // Usa SetProperty para atualizar o campo privado e chamar OnPropertyChanged
             set => SetProperty(ref _nome, value);
         }
 
@@ -80,9 +84,9 @@ namespace CadastroEventosMAUI.Models
 
 
         public TimeSpan Duracao => DataTermino.Subtract(DataInicio);
-
         public double DuracaoEmDias => Duracao.TotalDays;
-
         public decimal CustoTotal => CustoPorParticipante * NumeroParticipantes;
+
+
     }
 }

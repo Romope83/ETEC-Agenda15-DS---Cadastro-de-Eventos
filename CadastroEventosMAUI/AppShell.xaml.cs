@@ -8,6 +8,7 @@ namespace CadastroEventosMAUI
         {
             InitializeComponent();
 
+            Routing.RegisterRoute(nameof(CadastroEventoPage), typeof(CadastroEventoPage));
             Routing.RegisterRoute(nameof(ResumoEventoPage), typeof(ResumoEventoPage));
         }
     }

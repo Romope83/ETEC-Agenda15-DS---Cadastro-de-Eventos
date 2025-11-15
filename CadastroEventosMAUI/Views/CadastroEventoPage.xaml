@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CadastroEventosMAUI.ViewModels"
+             x:DataType="viewmodels:CadastroEventoViewModel"
+             x:Class="CadastroEventosMAUI.Views.CadastroEventoPage"
+             Title="Cadastro ou Edicao">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" Command="{Binding SalvarEventoCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label Text="Nome" />
+            <Entry Text="{Binding Evento.Nome}" Placeholder="Nome do evento" />
+
+            <Label Text="Local" />
+            <Entry Text="{Binding Evento.Local}" Placeholder="Local" />
+
+            <HorizontalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Inicio" />
+                    <DatePicker Date="{Binding Evento.DataInicio}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Margin="12,0,0,0">
+                    <Label Text="Termino" />
+                    <DatePicker Date="{Binding Evento.DataTermino}" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <Label Text="Numero de Participantes" />
+            <Entry Text="{Binding Evento.NumeroParticipantes}" Keyboard="Numeric"/>
+
+            <Label Text="Custo por Participante" />
+            <Entry Text="{Binding Evento.CustoPorParticipante}" Keyboard="Numeric" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

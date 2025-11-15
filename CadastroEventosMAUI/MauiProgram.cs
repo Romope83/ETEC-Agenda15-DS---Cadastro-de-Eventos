@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-
-//using CadastroEventosMAUI.Models;
-using CadastroEventosMAUI.Services;
+﻿using CadastroEventosMAUI.Services;
 using CadastroEventosMAUI.ViewModels;
 using CadastroEventosMAUI.Views;
+using CommunityToolkit.Maui;
 
 namespace CadastroEventosMAUI
 {
@@ -14,34 +12,34 @@ namespace CadastroEventosMAUI
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            // ----------------------------------------------------
-            // 💡 REGISTRO DE DEPENDÊNCIAS (Injeção de Dependência)
-            // ----------------------------------------------------
+            // serviços
+            // Remover inscrições duplicadas; registre EventDatabase e IEventDataService apenas uma vez
+            builder.Services.AddSingleton<EventDatabase>();
+            builder.Services.AddSingleton<IEventDataService, EventDataService>();
 
-            // 1. Serviços (Transient ou Singleton, dependendo da necessidade. Transient é comum para services)
-            // Usaremos IEventDataService para o DIP.
-            builder.Services.AddTransient<IEventDataService, EventDataService>();
-
-            // 2. ViewModels (Transient: uma nova instância para cada View)
+            // ViewModels e Views (ajuste conforme sua intenção)
             builder.Services.AddTransient<CadastroEventoViewModel>();
             builder.Services.AddTransient<ResumoEventoViewModel>();
 
-            // 3. Views/Páginas (Transient: Uma nova instância para cada uso)
             builder.Services.AddTransient<CadastroEventoPage>();
             builder.Services.AddTransient<ResumoEventoPage>();
 
-            // ----------------------------------------------------
-            // FIM DO REGISTRO
-            // ----------------------------------------------------
+            // Use singleton apenas se você quiser um VM única para toda a aplicação
+            builder.Services.AddSingleton<EventListViewModel>();
+            builder.Services.AddSingleton<EventListPage>();
 
-#if DEBUG
-            builder.Logging.AddDebug();
+            // File services por plataforma (já existentes no seu código)
+#if ANDROID
+            builder.Services.AddSingleton<IFileService, Platforms.Android.Services.FileService>();
+#elif WINDOWS
+            builder.Services.AddSingleton<IFileService, Platforms.Windows.Services.FileService>();
 #endif
 
             return builder.Build();
